@@ -1,7 +1,7 @@
 import { QueryInterface } from "sequelize/types";
 import {
   Sequelize,
-  DataType as SequelizeTypescriptDataType
+  DataType as SequelizeTypescriptDataType,
 } from "sequelize-typescript";
 export default async function createMigrationTable(sequelize: Sequelize) {
   const queryInterface: QueryInterface = sequelize.getQueryInterface();
@@ -10,23 +10,23 @@ export default async function createMigrationTable(sequelize: Sequelize) {
       type: SequelizeTypescriptDataType.STRING,
       allowNull: false,
       unique: true,
-      primaryKey: true
-    }
+      primaryKey: true,
+    },
   });
   await queryInterface.createTable("SequelizeMetaMigrations", {
     revision: {
       type: SequelizeTypescriptDataType.INTEGER,
       allowNull: false,
       unique: true,
-      primaryKey: true
+      primaryKey: true,
     },
     name: {
       type: SequelizeTypescriptDataType.STRING,
-      allowNull: false
+      allowNull: false,
     },
     state: {
       type: SequelizeTypescriptDataType.JSON,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   });
 }

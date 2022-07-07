@@ -125,7 +125,7 @@ ${JSON.stringify(action.options)}
   return { commandsUp, commandsDown, consoleOut };
 }
 
-const propertyToStr = obj => {
+const propertyToStr = (obj) => {
   const vals = [];
   for (const k in obj) {
     if (k === "seqType") {
@@ -154,12 +154,12 @@ const propertyToStr = obj => {
   }
 
   return `{ ${vals
-    .filter(v => v !== "")
+    .filter((v) => v !== "")
     .reverse()
     .join(", ")} }`;
 };
 
-const getAttributes = attrs => {
+const getAttributes = (attrs) => {
   const ret = [];
   for (const attrName in attrs) {
     ret.push(`      "${attrName}": ${propertyToStr(attrs[attrName])}`);

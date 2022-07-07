@@ -32,7 +32,7 @@ export default function getDiffActionsFromTables(
     return actions;
   }
 
-  difference.forEach(df => {
+  difference.forEach((df) => {
     switch (df.kind) {
       // add new
       case "N":
@@ -125,6 +125,11 @@ export default function getDiffActionsFromTables(
               : undefined;
             const index = copied;
 
+            if (!index) {
+              console.warn(`Index rhs data at ${tableName} empty, skipping`);
+              break;
+            }
+
             index.actionType = "addIndex";
             index.tableName = tableName;
             index.depends = [tableName];
@@ -190,6 +195,12 @@ export default function getDiffActionsFromTables(
           }
 
           if (df.path[1] === "indexes") {
+            if (!df.lhs || !df.lhs.fields) {
+              console.warn(`Edit index at ${tableName} lhs empty, skipping`);
+
+              break;
+            }
+
             actions.push({
               actionType: "removeIndex",
               tableName,

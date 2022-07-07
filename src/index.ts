@@ -91,7 +91,7 @@ export class SequelizeTypescriptMigration {
     }
 
     // log
-    migration.consoleOut.forEach(v => {
+    migration.consoleOut.forEach((v) => {
       console.log(`[Actions] ${v}`);
     });
     if (options.preview) {

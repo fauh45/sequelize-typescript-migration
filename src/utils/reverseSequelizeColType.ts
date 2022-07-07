@@ -179,7 +179,7 @@ export default function reverseSequelizeColType(
     "INET",
     "MACADDR",
     "CITEXT",
-  ].forEach(typeName => {
+  ].forEach((typeName) => {
     if (attrType.constructor.name === typeName) {
       seqType = `${prefix}${typeName}`;
     }

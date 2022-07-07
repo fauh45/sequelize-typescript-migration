@@ -1,5 +1,9 @@
 import { Sequelize } from "sequelize-typescript";
-import { ModelCtor, Model, ModelAttributeColumnOptions } from "sequelize/types";
+import {
+  ModelStatic,
+  Model,
+  ModelAttributeColumnOptions,
+} from "sequelize/types";
 import reverseSequelizeColType from "./reverseSequelizeColType";
 import reverseSequelizeDefValueType from "./reverseSequelizeDefValueType";
 import parseIndex from "./parseIndex";
@@ -7,7 +11,7 @@ import parseIndex from "./parseIndex";
 export default function reverseModels(
   sequelize: Sequelize,
   models: {
-    [key: string]: ModelCtor<Model>;
+    [key: string]: ModelStatic<Model>;
   }
 ) {
   const tables = {};
@@ -65,7 +69,7 @@ export default function reverseModels(
         "onUpdate",
         "onDelete",
         "validate",
-      ].forEach(key => {
+      ].forEach((key) => {
         if (attribute[key] !== undefined) {
           rowAttribute[key] = attribute[key];
         }

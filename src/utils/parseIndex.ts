@@ -12,8 +12,8 @@ export default function parseIndex(idx: IndexesOptions) {
     "fields",
     "using",
     "operator",
-    "where"
-  ].forEach(key => {
+    "where",
+  ].forEach((key) => {
     if (idx[key] !== undefined) {
       result[key] = idx[key];
     }
